@@ -9,7 +9,10 @@ class Villager():
         self.sign = Villager.toSignInt(villagerList[3])
 
     def __repr__(self):
-        return "%s %s %s %s" %(self.name, self.personality, self.species, self.sign)
+        if Config.VERBOSE:
+            return "%s %s %s %s" %(self.name, self.personality, self.species, self.sign)
+        else:
+            return self.name
 
     def toPersonalityInt(p):
          #convert personality to int as specified in config
@@ -23,5 +26,3 @@ class Villager():
         #Convert sign to int as specified in config
         return Config.SIGN_DICTIONARY[s]
 
-    def hi(self,s):
-        print("lol")

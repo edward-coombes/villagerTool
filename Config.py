@@ -1,5 +1,7 @@
 DEBUG = True
 VERBOSE = True
+MAX_VILLAGE_SIZE = 10
+
 
 #COLUMN NAMES
 NAME = "Name"
