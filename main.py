@@ -67,10 +67,11 @@ def createVillage(nameList):
 
 def optimizeVillageWalk(optimizer, village, notVillage):
     '''
-        Create an optimized village, when supplied an optimizer function (max/min) and a list of villagers
+        Create a semi-optimized village, when supplied an optimizer function (max/min) and a list of villagers
     '''
-    if False and Config.DEBUG:
-        print("Optimizing on Village: " + str(village) + " of size " + str(len(village)) +  " with score " + str(villageCompatibility(village, verbose=False)))
+    if Config.DEBUG:
+        print("Optimizing on Village: " + str(village) + " of size " 
+                + str(len(village)) +  " with score " + str(villageCompatibility(village, verbose=False)))
     optimalScore = 0
     best = []
     if len(village) == Config.MAX_VILLAGE_SIZE:
@@ -107,15 +108,14 @@ def optimizeVillageWalk(optimizer, village, notVillage):
     #return the list of optimalVillages
     return optimalVillages
 
-
 verbose = False
-myCurrentVillagerNames = ["Merengue","Puck","Curlos","Monique","Hamlet"]
+myCurrentVillagerNames = [] # ["Merengue","Puck","Curlos","Monique","Hamlet"]
 notInVillage = [name for name in villagerNames if name not in myCurrentVillagerNames]
 myCurrentVillage = createVillage(myCurrentVillagerNames)
 notMyCurrentVillage = createVillage(notInVillage)
 
 #print("Overall Score: %s" % villageCompatibility(myCurrentVillage,verbose=verbose))
 optimalVillages = optimizeVillageWalk(min, myCurrentVillage,notMyCurrentVillage)
-print("Optimal Villages are: ")
+print("Optimal Village(s): ")
 for v in optimalVillages:
-    print(str(v) + " " + str(villageCompatibility(v,verbose=False)))
+    print(str(v) + " with score: " + str(villageCompatibility(v,verbose=False)))
